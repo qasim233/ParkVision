@@ -47,7 +47,21 @@ ENV/
 ehthumbs.db
 Thumbs.db
 
-# Temporary files
+# Temporary files and build artifacts
+temp/
+logs/
+build/
+dist/
+
+# Documentation and development files
+CLOUD_DEPLOYMENT.md
+docker-compose.yml
+deploy.sh
+deploy.bat
+
+# Large development-only directories
+desktop_app/
+__pycache__/
 *.tmp
 *.temp
 temp/
