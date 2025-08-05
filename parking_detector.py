@@ -114,7 +114,7 @@ class ParkingDetector:
         """Load the complete collage image at original resolution"""
         try:
             # Try to load the new collage image first
-            collage_path = "Images/Collage_Image3.png"
+            collage_path = "images/Collage_Image3.png"
             if os.path.exists(collage_path):
                 collage = cv2.imread(collage_path)
                 if collage is not None:
@@ -123,7 +123,7 @@ class ParkingDetector:
                     return collage
             
             # Fallback to original collage
-            collage_path = "Images/Collage_Image.png"
+            collage_path = "images/Collage_Image.png"
             if os.path.exists(collage_path):
                 collage = cv2.imread(collage_path)
                 if collage is not None:

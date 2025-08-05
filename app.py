@@ -369,5 +369,12 @@ initialize_app()
 
 # This allows the app to be run directly during development
 if __name__ == '__main__':
-    # Run with debug only in development
-    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
+    # Get port from environment variable (for cloud platforms)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    
+    # Run with debug disabled for production
+    debug_mode = os.environ.get('FLASK_ENV') == 'development'
+    
+    print(f"🚀 Starting ParkVision API on port {port}")
+    app.run(host='0.0.0.0', port=port, debug=debug_mode, threaded=True)

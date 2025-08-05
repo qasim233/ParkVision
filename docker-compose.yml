@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  parkvision:
+    build: .
+    container_name: parkvision-app
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FLASK_ENV=production
+      - DISPLAY_ENABLED=false
+    volumes:
+      - ./logs:/app/logs
+      - ./temp:/app/temp
+    restart: unless-stopped
+    networks:
+      - parkvision-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  parkvision-network:
+    driver: bridge
+
+volumes:
+  logs:
+  temp:
